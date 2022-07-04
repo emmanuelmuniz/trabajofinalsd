@@ -1,0 +1,8 @@
+INSERT INTO products (name, price, create_at) VALUES('TV Panasonic', 800, NOW())
+INSERT INTO products (name, price, create_at) VALUES('TV Philips', 800, NOW())
+INSERT INTO products (name, price, create_at) VALUES('Tablet Samsung', 800, NOW())
+INSERT INTO products (name, price, create_at) VALUES('iPhone 12', 2300, NOW())
+INSERT INTO products (name, price, create_at) VALUES('Laptop HP', 1000, NOW())
+INSERT INTO products (name, price, create_at) VALUES('Laptop Dell', 2000, NOW())
+INSERT INTO products (name, price, create_at) VALUES('MacBook Pro', 3000, NOW())
+INSERT INTO products (name, price, create_at) VALUES('TV LG', 800, NOW())

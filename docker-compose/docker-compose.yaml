@@ -1,0 +1,47 @@
+version: '3.7'
+services:
+  mysqlhost:
+    image: mysql:8
+    ports:
+      - "3307:3306"
+    expose:
+      - 3306
+    networks:
+      - microservices
+    environment:
+      MYSQL_DATABASE: productdb
+      MYSQL_ROOT_PASSWORD: 1234
+    container_name: mysqlhost
+  eureka-server:
+    image: eureka-server:v1
+    ports:
+      - "8761:8761"
+    networks:
+      - microservices
+    container_name: eureka-server
+  products-service:
+    image: products-service:v1
+    restart: always
+    ports:
+      - "8080:8080"
+    networks:
+      - microservices
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysqlhost:3306/productdb
+    depends_on:
+      - mysqlhost
+      - eureka-server
+    container_name: products-service
+  items-service:
+    image: items-service:v1
+    ports:
+      - "8081:8081"
+    networks:
+      - microservices
+    depends_on:
+      - products-service
+    
+    container_name: items-service
+networks:
+  microservices:
+    name: microservices
